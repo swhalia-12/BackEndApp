@@ -8,7 +8,7 @@ class BackEndAppApplicationTests {
 
 	@Test
 	void contextLoads() {
-		//helloo
+		System.out.Println("hello");
 	}
 
 }
