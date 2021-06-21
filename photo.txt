@@ -1,0 +1,299 @@
+C:\Users\swhaliaparveen\Downloads\person.jpg
+
+C:\Users\swhaliaparveen\Downloads\person1.jpg
+
+
+//
+//class HashTablesExample {
+//  // class linked hash
+//  class LinkedHash {
+//      String key;
+//      int value;
+//      LinkedHash next;
+//
+//      // constructor of linked hash
+//      LinkedHash(String key, int value)
+//      {
+//          this.key = key;
+//          this.value = value;
+//          this.next = null;
+//      }
+//  }
+//
+//  private static int tableSize;
+//  private static int size;
+//  private static LinkedHash[] table;
+//
+//  // constructor of HashTableExample
+//  public HashTablesExample(int ts)
+//  {
+//      size = 0;
+//      tableSize = ts;
+//      table = new LinkedHash[tableSize];
+//
+//      // initializing the hash table with null values
+//      for (int i = 0; i < tableSize; i++)
+//          table[i] = null;
+//  }
+//
+//  // method to get the number of key-value pairs in the
+//  // hash table
+//  public int getSize() 
+//  { 
+//	  return size; 
+//	  }
+//
+//  // method to clear the hash table entry
+//  public void makeEmpty()
+//  {
+//      for (int i = 0; i < tableSize; i++)
+//          table[i] = null;
+//  }
+//
+//  // method to get value of a key
+//  public int get(String key)
+//  {
+//      int value = (myhash(key) % tableSize);
+//      if (table[value] == null)
+//          return -1;
+//      else {
+//          LinkedHash current = table[value];
+//          while (current != null
+//                 && !current.key.equals(key)) {
+//              current = current.next;
+//          }
+//          if (current == null) {
+//              return -1;
+//          }
+//          else {
+//              return current.value;
+//          }
+//      }
+//  }
+//
+//  // method to insert a value in a hash table
+//  public void insert(String key, int value)
+//  {
+//      int hash = (myhash(key) % tableSize);
+//      if (table[hash] == null) {
+//          table[hash] = new LinkedHash(key, value);
+//      }
+//      else {
+//          LinkedHash entry = table[hash];
+//          while (entry.next != null && !entry.key.equals(key)) 
+//          {
+//              entry = entry.next;
+//          }
+//          if (entry.key.equals(key)) {
+//              entry.value = value;
+//          }
+//          else {
+//              entry.next = new LinkedHash(key, value);
+//          }
+//      }
+//      size++;
+//  }
+//
+//  // method to remove the value with the specified key
+//  public void delete(String key)
+//  {
+//      int value = (myhash(key) % tableSize);
+//      if (table[value] != null) {
+//          LinkedHash prev = null;
+//          LinkedHash current = table[value];
+//          while (current.next != null && !current.key.equals(key)) {
+//              prev = current;
+//              current = current.next;
+//          }
+//          if (current.key.equals(key)) {
+//              if (prev == null) {
+//                  table[value] = current.next;
+//              }
+//              else {
+//                  prev.next = current.next;
+//              }
+//              size--;
+//          }
+//      }
+//  }
+//
+//  // method which gives a hash value from a given
+//  // specified string
+//  private static int myhash(String x)
+//  {
+//      int value = x.hashCode();
+//      value %= tableSize;
+//      if (value < 0) {
+//          value = value + tableSize;
+//      }
+//      return value;
+//  }
+//
+//  // method to print the value of hash table
+//  public void printHashTable()
+//  {
+//      for (int i = 0; i < tableSize; i++) {
+//          LinkedHash current = table[i];
+//          while (current != null) {
+//              System.out.println(
+//                  "Value = " + current.value + " "
+//                  + "Key = " + current.key);
+//              current = current.next;
+//          }
+//      }
+//      System.out.println();
+//  }
+//
+//  
+//  static void cointains(String key) 
+//  {
+//  	int value = (myhash(key) % tableSize);
+//  	//if (table[value] == null)
+//          //System.out.println("Empty");
+//  	 
+//  		LinkedHash current = table[value];
+//  		while (current != null
+//                  && !current.key.equals(key)) {
+//               current = current.next;
+//               }
+//  		if (current == null) {
+//  			System.out.println("Not present in HashTable");
+//          }
+//          else {
+//          	System.out.println("Present in HashTable");
+//          }
+//  	}
+//  public  Iterator iterator() {
+//		Iterator it = new Iterator() {
+//			
+//			
+//			int temp=0;
+//			@Override
+//			public boolean hasNext() {
+//				return temp !=size;
+//			}
+//
+//			@Override
+//			public Object next() {
+//				temp=temp+1;
+//				LinkedHash key=table[temp];
+//				return "Key: "+key+" Value: "+table.length;
+//			
+//			}
+//			
+//		};
+//		
+//		return it;
+//	}
+//  
+//  
+//
+//
+//}
+//
+//public class HashTableMethod
+//{
+//	public static void main(String [] args) {
+//		//int value;
+//		//String key;	
+//		String key;
+//		//String key2;
+//		int value;
+//    	Scanner sc=new Scanner(System.in);
+//    	System.out.println("Enter size of hash table");
+//    	  
+//    	
+//    	HashTablesExample table= new HashTablesExample(sc.nextInt());
+//    	
+//        while(true)
+//	     {
+//        	
+//				System.out.println("Enter Your Choice ");
+//				System.out.println("1. Insert ");
+//				System.out.println("2. Delete ");
+//				System.out.println("3. Print ");
+//				System.out.println("4. Get Value by Key");
+//				System.out.println("5. Cointains ");
+//				System.out.println("6. Size");
+//				System.out.println("7. Iterator");
+//				int choice=0;
+//				try {
+//					choice = sc.nextInt();
+//				}
+//				catch(InputMismatchException e)
+//				{
+//					System.out.println("Number is required : INVALID INPUT ");
+//					sc.nextLine();
+//					continue;
+//				}
+//				switch (choice) {
+//	            case 1:
+//	                System.out.println("Enter key and value");
+//	                
+//	                key = sc.next();
+//	                value=sc.nextInt();
+//	                table.insert(key, value);
+//	                System.out.println("Inserted Successfully");
+//	                //System.out.println("Inserted" + table.insert(key, value) );
+//	                break;
+//	  
+//	            case 2:
+//	                System.out.println("Enter key");
+//	                
+//	                String key2 = sc.next();
+//	               
+//	                table.delete(key2);
+//	                System.out.println("Removed Successfully");
+//	                break;
+//	  
+//	            case 3:
+//	                System.out.println("Key-value pairs in the hash table are : ");
+//	                table.printHashTable();
+//	                break;
+//	  
+//	            case 4:
+//	                System.out.println("Enter key");
+//	                String key3 = sc.next();
+//	                System.out.println("Key = " + key3 + " Value = " + table.get(key3));
+//	                break;
+//	  
+//	            case 5:
+//	                System.out.println("Enter key");
+//	                String key4 = sc.next();
+//	                HashTablesExample.cointains(key4);
+////	                table.makeEmpty();
+////	                System.out.println(
+////	                    "Hash Table Cleared Successfully..");
+//	                break;
+//	  
+//	            case 6:
+//	                System.out.println("Size of the table is = "  + table.getSize());
+//	                break;
+//	                
+//	            case 7:
+//	            	System.out.println("Using Iterator The queue elements are: ");
+//	   	         for (Iterator ii = table.iterator(); ii.hasNext();) {
+//	   	            System.out.print(ii.next()+" ");
+//	   	         }
+//	   	         System.out.println();
+//	   	         break;
+//	  
+//	            default:
+//	    	    	System.out.println("Invalid Option");
+//	    	        }
+//	    	     System.out.println("Do You want to Quit Enter 0 or 1");
+//	    	     int choice1=sc.nextInt();
+//	    	     if(choice1==0){  
+//	    	    	 System.out.println("End");
+//	    	    	 sc.close();
+//	    	    	 break;
+//	    	     }
+//	    	     else
+//	    	     {	 
+//	    	    	 continue;
+//	    	     }
+//	    	     
+//	            }
+//	        }
+//
+//}
